@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix Payer | Web Developer & Media Technology Graduate</title>
+    <meta name="description"
+        content="Felix Payer - Web Developer, Media Technology Graduate, and Digital Creative. Personal portfolio showcasing projects, skills, and achievements.">
+
+    <!-- Favicon (placeholder) -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="portfolio-styles.css">
+    <link rel="stylesheet" href="portfolio-additional-css.css">
+</head>
+
+<body>
+    <!-- Preloader - Add this right after <body> tag -->
+    <div class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Indicator - Add this right after preloader -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">Felix<span class="text-accent">Payer</span></a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background" id="particles"></div>
+        <div class="container">
+            <!-- Scroll Indicator for Hero Section - Add this inside the hero section -->
+            <div class="scroll-indicator">
+                <span>SCROLL DOWN</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Felix Payer</h1>
+                <p class="hero-subtitle">Web Developer | Media Technology Graduate | Digital Creative</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary micro-interaction"><i class="fas fa-envelope"></i> Contact
+                        Me</a>
+                    <a href="#projects" class="btn btn-secondary micro-interaction"><i class="fas fa-code"></i> View
+                        Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image parallax" data-speed="0.05">
+                    <img src="assets/Felix_Payer.png" alt="Felix Payer">
+                </div>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>I'm a soon-to-be graduate from <strong>HTL Rennweg</strong> with a specialization in
+                        <strong>Media Technology – Web Development</strong>. My passion lies in creating modern,
+                        efficient, and visually stunning web applications.</p>
+                    <p>As an accomplished <span class="text-accent">Rocket League Coach on Fiverr</span>, I've earned
+                        the "Fiverr's Choice" award for my dedication to quality service and client satisfaction.</p>
+                    <p>My professional background includes experience in photography and office automation, giving me a
+                        well-rounded perspective on digital media and business operations.</p>
+                    <p>When I'm not coding, you'll find me pursuing athletic interests including powerlifting, tricking,
+                        calisthenics, and boxing – disciplines that have taught me the value of perseverance,
+                        discipline, and continuous improvement.</p>
+                    <div class="about-tags">
+                        <span class="about-tag">Web Developer</span>
+                        <span class="about-tag">Media Technology</span>
+                        <span class="about-tag">Digital Creative</span>
+                        <span class="about-tag">Coding Competitor</span>
+                        <span class="about-tag">Athlete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            <div class="skills-categories">
+                <div class="skills-category hover-scale">
+                    <h3><i class="fas fa-code"></i> Web Development & Tech</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">AI</div>
+                        <div class="skill-item">Symfony</div>
+                        <div class="skill-item">Doctrine</div>
+                        <div class="skill-item">VueJS</div>
+                        <div class="skill-item">ReactJS</div>
+                        <div class="skill-item">WordPress</div>
+                        <div class="skill-item">Joomla</div>
+                        <div class="skill-item">Typo3</div>
+                    </div>
+                </div>
+                <div class="skills-category hover-scale">
+                    <h3><i class="fas fa-paintbrush"></i> Creative Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">Adobe Photoshop</div>
+                        <div class="skill-item">Premiere Pro</div>
+                        <div class="skill-item">After Effects</div>
+                        <div class="skill-item">InDesign</div>
+                    </div>
+                </div>
+                <div class="skills-category hover-scale">
+                    <h3><i class="fas fa-toolbox"></i> Other Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">Jira</div>
+                        <div class="skill-item">Office 365</div>
+                        <div class="skill-item">Unity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card hover-glow">
+                    <div class="project-image">
+                        <img src="assets/Kluges_Management.png" alt="Kluges Management Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Kluges Management</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Symfony</span>
+                            <span class="project-tag">WebSocket</span>
+                            <span class="project-tag">Linux VPS</span>
+                            <span class="project-tag">CI/CD</span>
+                        </div>
+                        <p class="project-description">Diploma thesis project. Won the Sustainability Award 2025 from
+                            Konica Minolta. Roles: Project Leader, Scrum Master, Backend Developer.</p>
+                        <a href="#" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card hover-glow">
+                    <div class="project-image">
+                        <img src="assets/ChaosChess.png" alt="ChessChaos Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ChessChaos</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Stockfish</span>
+                            <span class="project-tag">Web Development</span>
+                        </div>
+                        <p class="project-description">Chess website that integrates Stockfish into a Python backend,
+                            providing advanced chess analysis and gameplay options.</p>
+                        <a href="#" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card hover-glow">
+                    <div class="project-image">
+                        <img src="assets/Hillside.png" alt="Hillside Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hillside</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">Canvas</span>
+                            <span class="project-tag">Game Dev</span>
+                        </div>
+                        <p class="project-description">A modernized version of the browser game "Slope", featuring
+                            improved colision detection, smoother gameplay, and a better user experience.</p>
+                        <a href="#" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements</h2>
+            </div>
+            <div class="achievements-list">
+                <!-- Achievement 1 -->
+                <div class="achievement-card hover-scale">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="achievement-title">Fiverr's Choice Award</h3>
+                    <p class="achievement-description">Recognized as a top-tier Rocket League coach on Fiverr in 2024,
+                        demonstrating excellence in service delivery.</p>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card hover-scale">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="achievement-title">Cloudflight Coding Contest</h3>
+                    <p class="achievement-description">Placed 2nd in Austria and 8th worldwide in the prestigious
+                        Cloudflight Coding Contest (2024).</p>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="achievement-card hover-scale">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h3 class="achievement-title">Vienna School Chess Tournament</h3>
+                    <p class="achievement-description">Finalist in the Vienna School Chess Tournament (2024),
+                        demonstrating strategic thinking and competitive spirit.</p>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div class="achievement-card hover-scale">
+                    <div class="achievement-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="achievement-title">Sustainability Award</h3>
+                    <p class="achievement-description">Diploma thesis project "Kluges Management" won the Sustainability
+                        Award 2025 from Konica Minolta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
+                        vision.</p>
+
+                    <!-- Email -->
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p><a href="mailto:felixpayer.business@gmail.com">felixpayer.business@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+4369916089">+43 699 160 89</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Fiverr -->
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Fiverr</h4>
+                            <p><a href="https://www.fiverr.com/s/8zl2VmZ" target="_blank">Rocket League Coaching</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Enter your message"
+                            rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary micro-interaction">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Felix<span class="text-accent">Payer</span></div>
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#skills" class="footer-link">Skills</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#achievements" class="footer-link">Achievements</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.fiverr.com/s/8zl2VmZ" class="social-link"><i class="fas fa-briefcase"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Felix Payer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="portfolio-javascript.js"></script>
+    <script src="portfolio-advanced-animations.js"></script>
+</body>
+
+</html>

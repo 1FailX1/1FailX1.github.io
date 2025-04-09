@@ -1,0 +1,382 @@
+/* Additional CSS for animations and interactive elements */
+
+/* Typing effect cursor */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--white);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+  transform-origin: left;
+  transform: scaleX(var(--scroll, 0));
+  z-index: 9999;
+}
+
+/* Custom cursor (optional) */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(89, 50, 234, 0.3);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.expanded {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(89, 50, 234, 0.4);
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+body.loaded .preloader {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Loading animation for project images */
+.project-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  animation: loading 1.5s infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes loading {
+  100% { transform: translateX(100%); }
+}
+
+/* Glitch effect for text (can be applied to specific elements) */
+.glitch {
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--accent-light);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(28px, 9999px, 22px, 0);
+  }
+  5% {
+    clip: rect(64px, 9999px, 78px, 0);
+  }
+  10% {
+    clip: rect(75px, 9999px, 20px, 0);
+  }
+  15% {
+    clip: rect(6px, 9999px, 72px, 0);
+  }
+  20% {
+    clip: rect(32px, 9999px, 9px, 0);
+  }
+  25% {
+    clip: rect(38px, 9999px, 42px, 0);
+  }
+  30% {
+    clip: rect(1px, 9999px, 23px, 0);
+  }
+  35% {
+    clip: rect(62px, 9999px, 48px, 0);
+  }
+  40% {
+    clip: rect(94px, 9999px, 14px, 0);
+  }
+  45% {
+    clip: rect(95px, 9999px, 9px, 0);
+  }
+  50% {
+    clip: rect(21px, 9999px, 45px, 0);
+  }
+  55% {
+    clip: rect(20px, 9999px, 25px, 0);
+  }
+  60% {
+    clip: rect(25px, 9999px, 68px, 0);
+  }
+  65% {
+    clip: rect(65px, 9999px, 18px, 0);
+  }
+  70% {
+    clip: rect(24px, 9999px, 39px, 0);
+  }
+  75% {
+    clip: rect(32px, 9999px, 12px, 0);
+  }
+  80% {
+    clip: rect(13px, 9999px, 86px, 0);
+  }
+  85% {
+    clip: rect(52px, 9999px, 33px, 0);
+  }
+  90% {
+    clip: rect(62px, 9999px, 76px, 0);
+  }
+  95% {
+    clip: rect(27px, 9999px, 97px, 0);
+  }
+  100% {
+    clip: rect(25px, 9999px, 7px, 0);
+  }
+}
+
+/* Reveal animation for sections */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--gold), var(--accent));
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animated border for sections */
+.border-animation {
+  position: relative;
+}
+
+.border-animation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--gold), var(--accent)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: border-rotate 4s linear infinite;
+}
+
+@keyframes border-rotate {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator span {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.scroll-indicator i {
+  font-size: 1.5rem;
+  animation: scroll-down 2s infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+}
+
+/* Smooth image transitions */
+.img-transition {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+}
+
+.img-transition:hover {
+  transform: scale(1.05);
+  filter: saturate(1.2) brightness(1.1);
+}
+
+/* 3D card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-3d:hover .card-3d-inner {
+  transform: rotateY(10deg);
+}
+
+/* Text reveal animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.text-reveal.active span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Glow effect for elements */
+.glow-on-hover {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-on-hover::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, var(--accent), var(--accent-light));
+  border-radius: calc(var(--radius-lg) + 5px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-on-hover:hover::before {
+  opacity: 0.5;
+  filter: blur(15px);
+}
+
+/* Grid line background for sections */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+  pointer-events: none;
+}
