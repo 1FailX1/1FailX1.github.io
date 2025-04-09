@@ -871,6 +871,10 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
   
+  .achievements-list {
+    grid-template-columns: 1fr;
+  }
+  
   .project-card {
     max-width: 400px;
     margin: 0 auto;
