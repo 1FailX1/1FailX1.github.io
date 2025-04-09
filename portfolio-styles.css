@@ -470,16 +470,27 @@ p {
 
 .project-image {
   width: 100%;
-  height: 300px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;  /* Maintain consistent ratio (adjust as needed) */
+}
+
+.project-image::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;  /* Fallback for browsers without aspect-ratio support (16:9 = 9/16 = 0.5625 = 56.25%) */
 }
 
 .project-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;  /* Use contain to show the whole image */
+  object-position: center;  /* Center the image */
   transition: transform var(--transition-medium);
+  background-color: rgba(0, 0, 0, 0.1);  /* Optional: adds a subtle background to empty space */
 }
 
 .project-card:hover .project-image img {
