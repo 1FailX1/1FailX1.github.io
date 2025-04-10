@@ -918,6 +918,13 @@ textarea.form-control {
   transform: none !important;
 }
 
+/* Add this to your CSS to set initial state */
+.project-card, .achievement-card, .about-grid {
+    opacity: 0.1;  /* Start slightly visible instead of completely invisible */
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
 /* ======= RESPONSIVE DESIGN ======= */
 @media (max-width: 1024px) {
   html {
