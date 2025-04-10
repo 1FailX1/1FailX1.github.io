@@ -125,18 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             y: '30%',
             ease: 'none'
         });
-        
-        // About image parallax
-        gsap.to('.about-image', {
-            scrollTrigger: {
-                trigger: '.about',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-            },
-            y: '20%',
-            ease: 'none'
-        });
+
         
         // Skills section background parallax
         gsap.to('.skills', {
