@@ -279,16 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize particles
     initParticlesBackground();
 
-    // Add a fallback to make hero content visible if animations fail
-    setTimeout(function () {
-        const heroElements = document.querySelectorAll('.hero-subtitle, .hero-cta');
-        heroElements.forEach(el => {
-            if (window.getComputedStyle(el).opacity === '0') {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }
-        });
-    }, 1000);
+
 });
 
 // Add a safety check for the particles animation
