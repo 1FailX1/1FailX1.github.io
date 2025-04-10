@@ -936,30 +936,20 @@ textarea.form-control {
   }
   
   .mobile-toggle {
-    display: block;
+    display: none; /* Hide the mobile toggle button */
   }
   
   .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--primary);
-    padding: var(--spacing-lg);
-    gap: var(--spacing-md);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-10px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-medium);
-    z-index: 1000;
-  }
-  
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+    position: static; /* Make the navigation links always visible */
+    flex-direction: column; /* Stack links vertically */
+    background-color: transparent; /* Remove background color */
+    padding: 0; /* Remove padding */
+    gap: var(--spacing-md); /* Keep spacing between links */
+    box-shadow: none; /* Remove shadow */
+    transform: none; /* Remove transform */
+    opacity: 1; /* Ensure visibility */
+    visibility: visible; /* Ensure visibility */
+    transition: none; /* Remove animations */
   }
   
   .about-grid, 
