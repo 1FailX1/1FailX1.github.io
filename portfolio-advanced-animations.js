@@ -239,17 +239,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Animate skill bars on scroll
+    // Replace the existing skill item animation code with this container-level animation
+    
+    // Remove individual skill item animations
     gsap.utils.toArray('.skill-item').forEach((skill, i) => {
-        gsap.from(skill, {
-            width: 0,
+        // Remove the existing animation and make all items visible
+        skill.style.opacity = '1';
+        skill.style.width = 'auto';
+    });
+
+    // Add fade-in animation for the entire skills category containers
+    gsap.utils.toArray('.skills-category').forEach((category) => {
+        gsap.from(category, {
             opacity: 0,
+            y: 20,
             duration: 0.8,
+            ease: 'power2.out',
             scrollTrigger: {
-                trigger: skill.parentNode,
-                start: 'top 80%'
-            },
-            delay: i * 0.1
+                trigger: category,
+                start: 'top 90%'
+            }
         });
     });
     
