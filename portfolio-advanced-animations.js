@@ -3,68 +3,68 @@
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Check if GSAP is loaded
     if (typeof gsap !== 'undefined') {
         // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Initialize animations
         initPageTransitions();
         initScrollAnimations();
         initParallaxEffects();
         initTextAnimations();
     }
-    
+
     // Page load animations
     function initPageTransitions() {
         // Timeline for page load
         const tl = gsap.timeline();
-        
+
         tl.to('.preloader', {
             opacity: 0,
             duration: 0.5,
             onComplete: () => document.querySelector('.preloader').style.display = 'none'
         });
-        
+
         tl.from('.navbar', {
             y: -100,
             opacity: 0,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.2');
-        
+
         tl.from('.hero-title', {
             y: 50,
             opacity: 0,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.4');
-        
+
         tl.from('.hero-subtitle', {
             y: 30,
             opacity: 0,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.6');
-        
+
         tl.from('.hero-cta', {
             y: 30,
             opacity: 0,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.6');
-        
+
         tl.from('.scroll-indicator', {
             opacity: 0,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.4');
-        
+
         // Add character-by-character animation to the hero title
         animateCharacters('.hero-title');
     }
-    
+
     // Scroll animations
     function initScrollAnimations() {
         // Comment out all these animations to prevent conflicts
@@ -111,22 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Parallax effects
     function initParallaxEffects() {
-        // Hero section parallax
-        gsap.to('.hero-background', {
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            },
-            y: '30%',
-            ease: 'none'
-        });
 
-        
+
         // Skills section background parallax
         gsap.to('.skills', {
             backgroundPosition: `50% ${window.innerHeight / 2}px`,
@@ -139,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Text animations
     function initTextAnimations() {
         // Replace the problematic pseudo-element selector
@@ -151,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     toggleActions: 'play none none none'
                 }
             });
-            
+
             // Create a separate element instead of animating ::after pseudo element
             const headingAfter = heading.parentNode.querySelector('h2::after');
             if (headingAfter) {
@@ -163,22 +152,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Character by character animation
     function animateCharacters(selector) {
         const element = document.querySelector(selector);
         if (!element) return;
-        
+
         const text = element.textContent;
         element.innerHTML = ''; // Use innerHTML rather than textContent to clear
-        
+
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
             const span = document.createElement('span');
             span.textContent = char === ' ' ? '\u00A0' : char;
             element.appendChild(span);
         }
-        
+
         const spans = element.querySelectorAll('span');
         if (spans.length > 0) {
             gsap.from(spans, {
@@ -192,41 +181,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
+
     // Update scroll progress bar
     function updateScrollProgress() {
         const scrollProgress = document.querySelector('.scroll-progress');
         if (!scrollProgress) return;
-        
+
         gsap.to(scrollProgress, {
             scaleX: window.scrollY / (document.body.scrollHeight - window.innerHeight),
             duration: 0.3,
             ease: 'power2.out'
         });
     }
-    
+
     // Update scroll progress on scroll
     window.addEventListener('scroll', updateScrollProgress);
-    
+
     // Mouse movement parallax for hero section
     document.addEventListener('mousemove', e => {
         const mouseX = e.clientX / window.innerWidth - 0.5;
         const mouseY = e.clientY / window.innerHeight - 0.5;
-        
+
         gsap.to('.hero-title', {
             x: mouseX * 20,
             y: mouseY * 20,
             duration: 0.8,
             ease: 'power2.out'
         });
-        
+
         gsap.to('.hero-subtitle', {
             x: mouseX * 10,
             y: mouseY * 10,
             duration: 0.8,
             ease: 'power2.out'
         });
-        
+
         // Particles follow mouse with varying speeds
         document.querySelectorAll('.particle').forEach((particle, i) => {
             const speed = i % 3 === 0 ? 5 : i % 3 === 1 ? 10 : 15;
@@ -238,9 +227,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // Replace the existing skill item animation code with this container-level animation
-    
+
     // Remove individual skill item animations
     gsap.utils.toArray('.skill-item').forEach((skill, i) => {
         // Remove the existing animation and make all items visible
@@ -261,14 +250,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Magnetic effect for buttons
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mousemove', e => {
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             gsap.to(btn, {
                 x: (x - rect.width / 2) / 10,
                 y: (y - rect.height / 2) / 10,
@@ -276,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'power2.out'
             });
         });
-        
+
         btn.addEventListener('mouseleave', () => {
             gsap.to(btn, {
                 x: 0,
@@ -286,12 +275,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // Initialize particles
     initParticlesBackground();
-    
+
     // Add a fallback to make hero content visible if animations fail
-    setTimeout(function() {
+    setTimeout(function () {
         const heroElements = document.querySelectorAll('.hero-subtitle, .hero-cta');
         heroElements.forEach(el => {
             if (window.getComputedStyle(el).opacity === '0') {
@@ -318,7 +307,8 @@ function initParticlesBackground() {
             interactivity: {
                 detect_on: "canvas",
                 events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } }
-            }
+            },
+            retina_detect: true  // Important for high-density screens
         });
     }
 }
