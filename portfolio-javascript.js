@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start observing elements
     elements.forEach(element => {
-        element.style.opacity = '0';
         observer.observe(element);
     });
     
@@ -203,11 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ======= TYPING EFFECT IN HERO SECTION =======
     function initTypeWriter() {
         const heroSubtitle = document.querySelector('.hero-subtitle');
-        const originalText = heroSubtitle.textContent;
+        const originalText = heroSubtitle.getAttribute('data-text');
         const typingSpeed = 80; // milliseconds
         
-        // Clear text initially
-        heroSubtitle.textContent = '';
+        // Text is already empty initially (from HTML)
         
         let charIndex = 0;
         
@@ -235,6 +233,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start typing effect after a short delay
     setTimeout(initTypeWriter, 1000);
+
+    // Add this at the end of your DOMContentLoaded event handler
+
+    // Emergency visibility fix
+    function ensureContentVisibility() {
+        // Force all main sections to be visible
+        const sections = ['about', 'skills', 'projects', 'achievements', 'contact'];
+        sections.forEach(section => {
+            const el = document.getElementById(section);
+            if (el) {
+                el.style.opacity = '1';
+                el.style.visibility = 'visible';
+                el.style.display = 'block';
+            }
+        });
+        
+        // Fix specific elements that might be invisible
+        document.querySelectorAll('.hero-content, .hero-title, .hero-subtitle, .hero-cta, .section-title, .about-grid, .skills-categories, .projects-grid, .achievements-list, .contact-grid').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }
+    
+    // Run the fix after a delay to allow animations to try first
+    setTimeout(ensureContentVisibility, 1000);
+    // Run again after a longer delay in case of any race conditions
+    setTimeout(ensureContentVisibility, 2500);
 });
 
 // ======= PROJECT CARDS HOVER EFFECT =======

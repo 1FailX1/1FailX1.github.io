@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Scroll animations
     function initScrollAnimations() {
+        // Comment out all these animations to prevent conflicts
+        /*
         // About section animation
         gsap.from('.about-grid', {
             scrollTrigger: {
@@ -82,62 +84,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Skills categories animation
-        gsap.from('.skills-category', {
-            scrollTrigger: {
-                trigger: '.skills',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out'
-        });
+        gsap.from('.skills-category', {...});
         
         // Project cards animation
-        gsap.from('.project-card', {
-            scrollTrigger: {
-                trigger: '.projects',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out'
-        });
+        gsap.from('.project-card', {...});
         
         // Achievement cards animation
-        gsap.from('.achievement-card', {
-            scrollTrigger: {
-                trigger: '.achievements',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out'
-        });
+        gsap.from('.achievement-card', {...});
         
         // Contact section animation
-        gsap.from('.contact-info, .contact-form', {
-            scrollTrigger: {
-                trigger: '.contact',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.3,
-            ease: 'power2.out'
-        });
-        
-        // Section titles animation
+        gsap.from('.contact-info, .contact-form', {...});
+        */
+
+        // Keep only the section titles animation
         gsap.utils.toArray('.section-title').forEach(title => {
             gsap.from(title, {
                 scrollTrigger: {
@@ -148,22 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 opacity: 0,
                 y: 30,
                 duration: 0.8,
-                ease: 'power2.out'
-            });
-        });
-        
-        // Skill items staggered animation
-        gsap.utils.toArray('.skills-list').forEach(list => {
-            gsap.from(list.children, {
-                scrollTrigger: {
-                    trigger: list,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                opacity: 0,
-                y: 20,
-                duration: 0.5,
-                stagger: 0.05,
                 ease: 'power2.out'
             });
         });
@@ -210,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Text animations
     function initTextAnimations() {
-        // Split text animation for section titles
+        // Replace the problematic pseudo-element selector
         gsap.utils.toArray('h2').forEach(heading => {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -220,12 +163,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Create effect for the underline
-            tl.from(heading.querySelector('::after'), {
-                width: 0,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, 0.3);
+            // Create a separate element instead of animating ::after pseudo element
+            const headingAfter = heading.parentNode.querySelector('h2::after');
+            if (headingAfter) {
+                tl.from(headingAfter, {
+                    width: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }, 0.3);
+            }
         });
     }
     
@@ -235,24 +181,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!element) return;
         
         const text = element.textContent;
-        element.textContent = '';
+        element.innerHTML = ''; // Use innerHTML rather than textContent to clear
         
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
             const span = document.createElement('span');
-            span.textContent = char === ' ' ? '\u00A0' : char; // Use non-breaking space for spaces
+            span.textContent = char === ' ' ? '\u00A0' : char;
             element.appendChild(span);
         }
         
-        gsap.from(element.querySelectorAll('span'), {
-            opacity: 0,
-            y: 20,
-            rotationX: 45,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'power2.out',
-            delay: 0.5
-        });
+        const spans = element.querySelectorAll('span');
+        if (spans.length > 0) {
+            gsap.from(spans, {
+                opacity: 0,
+                y: 20,
+                rotationX: 45,
+                stagger: 0.05,
+                duration: 0.8,
+                ease: 'power2.out',
+                delay: 0.5
+            });
+        }
     }
     
     // Update scroll progress bar
@@ -339,4 +288,39 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+    
+    // Initialize particles
+    initParticlesBackground();
+    
+    // Add a fallback to make hero content visible if animations fail
+    setTimeout(function() {
+        const heroElements = document.querySelectorAll('.hero-subtitle, .hero-cta');
+        heroElements.forEach(el => {
+            if (window.getComputedStyle(el).opacity === '0') {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }
+        });
+    }, 1000);
 });
+
+// Add a safety check for the particles animation
+function initParticlesBackground() {
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer && typeof particlesJS !== 'undefined') {
+        particlesJS('particles', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                opacity: { value: 0.1, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.1, width: 1 },
+                move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } }
+            }
+        });
+    }
+}
