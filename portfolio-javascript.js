@@ -141,24 +141,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Get form data
             const formData = new FormData(contactForm);
-            const formValues = Object.fromEntries(formData.entries());
-
-            // In a real application, you would send this data to a server
-            console.log('Form submitted with values:', formValues);
-
-            // Show success message (in a real application)
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
 
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            // Change button text to loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            // Reset form after delay
-            setTimeout(() => {
-                contactForm.reset();
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }, 3000);
+            // Send to Formspree using fetch API
+            fetch('https://formspree.io/f/xrbprryv', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                // Success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error!';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            });
         });
     }
 
