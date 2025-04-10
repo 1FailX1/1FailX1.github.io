@@ -313,6 +313,9 @@ p {
 .hero-content {
   position: relative;
   z-index: 2;
+  width: fit-content; /* Only take up as much space as needed */
+  max-width: 90%; /* Ensure it doesn't overflow on small screens */
+  margin-right: auto; /* Keep left alignment */
 }
 
 .hero-title {
