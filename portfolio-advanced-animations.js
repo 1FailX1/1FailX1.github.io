@@ -308,9 +308,9 @@ function initParticlesBackground() {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
                 color: { value: "#ffffff" },
-                opacity: { value: 0.1, random: true },
+                opacity: { value: 0.2, random: true },
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.1, width: 2 },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.2, width: 2 },
                 move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
             },
             interactivity: {
