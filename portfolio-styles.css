@@ -227,6 +227,20 @@ p {
   gap: 0.5rem;
 }
 
+.btn-fiverr {
+  background-color: #1dbf73; /* Fiverr green */
+  color: white;
+  border: 2px solid #1dbf73;
+  box-shadow: 0 4px 8px rgba(29, 191, 115, 0.3);
+}
+
+.btn-fiverr:hover {
+  background-color: #19a463; /* Slightly darker on hover */
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(29, 191, 115, 0.4);
+}
+
 /* ======= NAVIGATION ======= */
 .navbar {
   position: fixed;

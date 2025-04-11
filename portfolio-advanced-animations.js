@@ -251,28 +251,46 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Magnetic effect for buttons
+    // Magnetic effect for buttons - only on desktop
     document.querySelectorAll('.btn').forEach(btn => {
+        // Check if we're on desktop (screen width greater than 768px)
+        const isDesktop = () => window.innerWidth > 768;
+        
         btn.addEventListener('mousemove', e => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            // Only apply effect on desktop
+            if (isDesktop()) {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-            gsap.to(btn, {
-                x: (x - rect.width / 2) / 10,
-                y: (y - rect.height / 2) / 10,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
+                gsap.to(btn, {
+                    x: (x - rect.width / 2) / 10,
+                    y: (y - rect.height / 2) / 10,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                });
+            }
         });
 
         btn.addEventListener('mouseleave', () => {
+            // Always reset position (works on any device if somehow activated)
             gsap.to(btn, {
                 x: 0,
                 y: 0,
                 duration: 0.5,
                 ease: 'elastic.out(1, 0.3)'
             });
+        });
+        
+        // Handle window resize to reset button position if resizing to mobile
+        window.addEventListener('resize', () => {
+            if (!isDesktop()) {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.1
+                });
+            }
         });
     });
 
