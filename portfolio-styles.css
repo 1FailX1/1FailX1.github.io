@@ -1063,3 +1063,56 @@ textarea.form-control {
     padding: var(--spacing-lg);
   }
 }
+
+@media (min-width: 1921px) {
+  html {
+    font-size: calc(16px + 0.2vw); /* Base font size scales with viewport width */
+  }
+  
+  /* Hero section scaling */
+  .hero-title {
+    font-size: min(5.5rem, 4vw); /* Larger but with maximum size */
+  }
+  
+  .hero-subtitle {
+    font-size: min(1.75rem, 2.5vw);
+  }
+  
+  .hero-cta .btn {
+    padding: 0.85rem 1.75rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Navbar scaling for larger screens */
+  .navbar {
+    min-height: 70px;
+  }
+  
+  .logo {
+    font-size: calc(1.75rem + 0.5vw); /* Dynamic scaling based on viewport width */
+    padding: 0.35rem 0; /* Slightly increased padding for better visual balance */
+  }
+  
+  .nav-links {
+    font-size: 1.1rem;
+  }
+  
+  /* Container width adjustment */
+  .container {
+    max-width: 1600px; /* Wider container on very large screens */
+  }
+  
+  /* Section spacing adjustment */
+  .section {
+    padding: calc(var(--spacing-xxl) * 1.5) 0;
+  }
+  
+  /* Other elements that need proportional scaling */
+  .scroll-indicator {
+    bottom: 50px;
+  }
+  
+  .scroll-indicator i {
+    font-size: 1.8rem;
+  }
+}
